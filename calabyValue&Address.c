@@ -11,7 +11,7 @@ int main()
     int x=100,y=400;
     printf("call by value\n");
     printf("befor swap: x= %d, y= %d\n", x, y);
-    swap1(x,y);//¶Ç°e­È 
+    swap1(x,y);//å‚³é€å€¼ 
     printf("after swap: x= %d, y= %d\n", x, y);
     
     printf("\n");
@@ -20,13 +20,13 @@ int main()
     int a=100,b=400;
     printf("call by address\n");
     printf("befor swap: a= %d, b= %d\n", a, b);
-    swap2 (&a, &b);//¶Ç°e¦a§} 
+    swap2 (&a, &b);//å‚³é€åœ°å€ 
     printf("after swap: a= %d, b= %d\n", a, b);
     system("PAUSE");
     return 0;
 }
 
-void swap1 (int x, int y)//±µ¦¬­È 
+void swap1 (int x, int y)//æ¥æ”¶å€¼ 
 {
      int temp;
      temp=x;
@@ -35,7 +35,7 @@ void swap1 (int x, int y)//±µ¦¬­È
      printf("after swap: a= %d, b= %d\n", x, y);
  }
  
- void swap2 (int *x, int *y)//±µ¦¬¦a§}¡A¥Î*¥´¶}¨ú¥X¦a§}¤º¦s¨úªº­È 
+ void swap2 (int *x, int *y)//æ¥æ”¶åœ°å€ï¼Œç”¨*æ‰“é–‹å–å‡ºåœ°å€å…§å­˜å–çš„å€¼ 
 {
      int temp;
      temp=*x;
