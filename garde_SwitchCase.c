@@ -3,7 +3,7 @@
 
 int main(){
 	char grade;
-	printf("請輸入你的成績:");
+	printf("請輸入你的成績: ");
 	scanf("%c",&grade);
 	switch(grade){
 		case 'A': printf("學期成績為90~100\n");
