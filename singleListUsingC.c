@@ -1,5 +1,3 @@
-/* File name: singleListUsingC.c */
-/* Copyright by Bright 11-26-2016 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -27,13 +25,13 @@ int main()
     while(1) {
         printf("\n");
         printf("******************\n");
-        printf("   1. ¥[¤J\n");
-        printf("   2. §R°£\n");
-        printf("   3. ­×§ï\n");
-        printf("   4. ¦C¦L\n");
-        printf("   5. µ²§ô\n");
+        printf("   1. åŠ å…¥\n");
+        printf("   2. åˆªé™¤\n");
+        printf("   3. ä¿®æ”¹\n");
+        printf("   4. åˆ—å°\n");
+        printf("   5. çµæŸ\n");
         printf("*******************\n");
-        printf("½Ð¿ï¾Ü¥ô¤@¿ï¶µ (1-5): ");
+        printf("è«‹é¸æ“‡ä»»ä¸€é¸é … (1-5): ");
         option1 = getchar();
         flashBuffer();
 
@@ -54,20 +52,20 @@ int main()
                 printf("\n");
                 return 0;
             default:
-                printf("¿ù»~¿ï¶µ¡A½Ð­«·s¿ï¾Ü\n");
+                printf("éŒ¯èª¤é¸é …ï¼Œè«‹é‡æ–°é¸æ“‡\n");
         }
     }
 }
 
-/* ¥[¤J¬O¥H¤À¼Æªº°ª§C¥[¥H±Æ§Ç */
+/* åŠ å…¥æ˜¯ä»¥åˆ†æ•¸çš„é«˜ä½ŽåŠ ä»¥æŽ’åº */
 void insert_func(void)
 {
     ptr = (struct student *) malloc(sizeof(struct student));
-    printf("©m¦W: ");
+    printf("å§“å: ");
     scanf("%s", ptr->name);
     flashBuffer();
     
-    printf("¤À¼Æ: ");
+    printf("åˆ†æ•¸: ");
     scanf("%d", &ptr->score);
     flashBuffer();
     
@@ -81,11 +79,11 @@ void insert_func(void)
     prev->next = ptr;
 }
 
-/* §R°£¬O¥H©m¦W¬°Áä­È*/
+/* åˆªé™¤æ˜¯ä»¥å§“åç‚ºéµå€¼*/
 void delete_func(void)
 {
     char del_name[20], ans;
-    printf("±ý§R°£©m¦W: ");
+    printf("æ¬²åˆªé™¤å§“å: ");
     scanf("%s", del_name);
     flashBuffer();
     
@@ -96,26 +94,26 @@ void delete_func(void)
         current = current->next;
     }
     if (current != NULL) {
-        /* ½T»{¬O§_­n§R°£ */
-        printf("±z½T©w­n§R°£¶Ü(y/n)? ");
+        /* ç¢ºèªæ˜¯å¦è¦åˆªé™¤ */
+        printf("æ‚¨ç¢ºå®šè¦åˆªé™¤å—Ž(y/n)? ");
         ans = getchar();
         flashBuffer();
 
         if (ans == 'Y' || ans == 'y') {
             prev->next = current->next;
             free(current);
-            printf("%s ¤w³Q§R°£\n", del_name);
+            printf("%s å·²è¢«åˆªé™¤\n", del_name);
         }
     }
     else
-        printf("µL¦¹µ§¸ê®Æ\n");
+        printf("ç„¡æ­¤ç­†è³‡æ–™\n");
 }
 
 void modify_func(void)
 {
     char modify_name[20];
     int modify_score;
-    printf("±ý­×§ï¸ê®Æªº©m¦W: ");
+    printf("æ¬²ä¿®æ”¹è³‡æ–™çš„å§“å: ");
     scanf("%s", modify_name);
     flashBuffer();
     
@@ -127,30 +125,30 @@ void modify_func(void)
     }
     if (current != NULL) {
         printf("**************************\n");
-        printf("­ì¨Óªº¤À¼Æ: %d\n",current->score);
+        printf("åŽŸä¾†çš„åˆ†æ•¸: %d\n",current->score);
         printf("**************************\n");
-        printf("·sªº¤À¼Æ¬°: ");
+        printf("æ–°çš„åˆ†æ•¸ç‚º: ");
         scanf("%d", &modify_score);
         flashBuffer();
         current->score = modify_score;
-        printf("¤w³Q­×§ï\n");
+        printf("å·²è¢«ä¿®æ”¹\n");
     }
     else {
-        printf("µL¦¹µ§¸ê®Æ\n");
+        printf("ç„¡æ­¤ç­†è³‡æ–™\n");
         return;
     }
 
-    // °õ¦æ¥H¤U¤T­Ó¨BÆJ
-    // 1¡B«ü©w current ¸`ÂI¸ê®Æµ¹ newNode
+    // åŸ·è¡Œä»¥ä¸‹ä¸‰å€‹æ­¥é©Ÿ
+    // 1ã€æŒ‡å®š current ç¯€é»žè³‡æ–™çµ¦ newNode
     modifyNode = (struct student *) malloc(sizeof(struct student));
     strcpy(modifyNode->name, current->name);
     modifyNode->score = current->score;
     
-    // 2¡B§R°£ current ¸`ÂI
+    // 2ã€åˆªé™¤ current ç¯€é»ž
     prev->next = current->next;
     free(current);
     
-    // 3¡B¦A­«·s±Æ§Ç
+    // 3ã€å†é‡æ–°æŽ’åº
     prev = head;
     current = head->next;
     while ((current != NULL) && (current->score > modifyNode->score))
@@ -168,11 +166,11 @@ void display_func(void)
     int count=0;
     
     if(head->next == NULL) {
-        printf("¦ê¦C¬OªÅªº\n");
+        printf("ä¸²åˆ—æ˜¯ç©ºçš„\n");
     }
     else {
         printf("\n");
-        printf("  ©m¦W        ¤À¼Æ\n");
+        printf("  å§“å        åˆ†æ•¸\n");
         printf(" ----------------\n");
         current=head->next;
         while(current != NULL) {
@@ -182,7 +180,7 @@ void display_func(void)
             current=current->next;
         }
         printf(" ----------------\n");
-        printf(" Á`¦@¦³ %d µ§°O¿ý\n", count);
+        printf(" ç¸½å…±æœ‰ %d ç­†è¨˜éŒ„\n", count);
     }
 }
 
